@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How old are you?</title>
+    <script src="./how_old.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Hello, World!</h1>
+        I think you are <span id="age"></span> years old.
+    </div>
+
+    <script>
+        fetchAndInstantiate('how_old.wasm').then(instance => {
+            const ho = instance.exports.how_old(2022, 1999);
+            const age = document.getElementById('age');
+            age.innerText = ho;
+        })
+    </script>
+</body>
+</html>

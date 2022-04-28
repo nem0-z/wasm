@@ -1,0 +1,4 @@
+- To build: `wasm-pack build --target web`
+- To run unit tests: `wasm-pack test --node`
+- Need to deploy a simple HTTP server to serve the code: `python3 -m http.server 6969`
+- Obviously open your browser and enjoy

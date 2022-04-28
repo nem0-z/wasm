@@ -1,0 +1,21 @@
+Neither web nor assembly
+It is a platform providing ISA
+Zasto je web dobar
+Browseri kao mali OS - portable apps everywhere neovisno o arhitekturi
+HTTP
+JS, AJAX (async, Promises, bilo sta da se postigne bolji perf)
+
+Ganjao se performance, FLASH, ActiveX, medjutim ili je bilo lose za koristenje ili nije bilo secure...
+NaCl, PNaCl - zahtjevao Pepper API koji je samo Chrome implementirao (opet nije nesto portabilno)
+AOT, JIT
+LLVM backend, LLVM IR
+asm.js by Mozilla team - veci fajlovi, nema opcije dinamickog linkanja sa posix libovima kao sa bins na linuxu
+
+WebAssembly 2015. - Mnoge velike firme got behind the effort (google, microsoft, apple, adobe, ...)
+Korisno i za Node, sada mogu dobiti libs napisane u necem sto nije JS i ne moraju imati dependencies od windowsa, linuxa, macos, ...
+wasm je binary format, a wat je text format (kao assembly language od webassembly znam nema logike)
+podrzava tipove i32, i64, f32, f64 i to je to lol
+virtual stack machine - radi kao stack sa lokalnim varijablama - vrh stacka je na kraju funkcije retval
+https://webassembly.github.io/wabt/demo/wat2wasm/index.html - TOP STVAR
+WABT, wasm3
+
