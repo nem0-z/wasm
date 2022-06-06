@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How old are you?</title>
+    <script src="./how_old.js"></script>
+</head>
+<body>
+    <!-- <div> -->
+    <!--     <h1>Hello, World!</h1> -->
+    <!--     I think you are <span id="age"></span> years old. -->
+    <!-- </div> -->
+
+    <script>
+        const importObject = {
+            imports: {
+                log_func: function(arg) {
+                    console.log(`I think you are ${arg} years old.`);
+                }
+            }
+        }
+
+        // fetchAndInstantiate('how_old.wasm', importObject).then(instance => {
+        //     instance.exports.log_how_old(2022, 1999);
+        // })
+
+        // WebAssembly.compileStreaming(fetch('how_old.wasm'))
+        //     .then(function (mod) {
+        //         const imports = WebAssembly.Module.imports(mod);
+        //         console.log(imports);
+        //         const exports = WebAssembly.Module.exports(mod);
+        //         console.log(exports);
+        //     }
+        // );
+
+        // const wasm = WebAssembly.instantiateStreaming(fetch('how_old.wasm'), importObject)
+        //     .then(obj => obj.instance.exports)
+        //     .then(exports => console.log(exports));
+        const wasm = betterFetchAndInstantiate('how_old.wasm', importObject);
+        wasm.exports.log_how_old(2022, 1999);
+    </script>
+</body>
+</html>

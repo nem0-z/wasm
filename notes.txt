@@ -19,3 +19,9 @@ virtual stack machine - radi kao stack sa lokalnim varijablama - vrh stacka je n
 https://webassembly.github.io/wabt/demo/wat2wasm/index.html - TOP STVAR
 WABT, wasm3
 
+Struktura WASM modula:
+Type, Import, Function, Table, Memory, Global, Export, Start, Element, Code, Data, Data Count
+
+
+
+
