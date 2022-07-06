@@ -1,0 +1,9 @@
+WebAssembly (WASM) je specifikacija binarnog formata koja omogućava kreiranje brzih,
+sigurnih i portabilnih aplikacija. Neovisna je o hardveru i platformi na kojoj se izvršava.
+Nudi podršku za kompajliranje iz svih programskih jezika, među kojima su najpopularniji C, C++, Rust, itd. Ova specifikacija također obećava brzinu izvršavanja koda skoro pa jednaku nativnoj.
+
+WebAssembly je, radi prethodno navedenih osobina, vrlo brzo pronašao svoju primjenu u web aplikacijama, gdje su performanse i sigurnost od velikog značaja. Izvršavanje WASM modula unutar web klijenta je mnogo performantnije u odnosu na procesiranje JavaScript koda, koje uključuje interpretiranje, JIT kompilaciju, optimiziranje, itd. Zbog određenih ograničenja, WASM se ipak koristi kao komplement uz JavaScript, a ne kao zamjena.
+
+Ovaj rad će se fokusirati na analizu WASM arhitekture, prednosti i nedostatke iste,
+poređenje performansi aplikacija implementiranih u WebAssembly-ju i JavaScriptu, kao i demonstraciju aplikacije napisane u C++ programskom jeziku, koja se, nakon kompajliranja u WASM modul, izvršava u web pregledniku.
+
