@@ -23,5 +23,67 @@ Struktura WASM modula:
 Type, Import, Function, Table, Memory, Global, Export, Start, Element, Code, Data, Data Count
 
 
+Struktura mog diplomskog hahaha:
+
+Osobine low level compilation targeta:
+• Safe, fast, and portable semantics:
+  safe to execute
+  fast to execute
+  language-, hardware-, and platform-independent
+  deterministic and easy to reason about
+  simple interoperability with the Web platform
+
+• Safe and efficient representation:
+  compact and easy to decode
+  easy to validate and compile
+  easy to generate for producers
+  streamable and parallelizable
+
+- Uvod: 
+ * Motivacija: brze portabilne sigurne aplikacije, mogucnost da pisemo low level kod i izvrsavamo ga u kojem god okruzenju.
+osobine ove odozgo... reci da ova specifikacija ticks all the boxes... wasm nije nuzno za web iako mu to pise u imenu. 
+
+ * Historija: ovde ces malo konkretnije pricati o implementacijama na webu -> flash, activex, NaCl, ... navesti probleme ovih implementacija
+(Mogla bi se cak ovde i java spomenuti sa svojim jvmom, koja je eto uspjesna ali opet ima ogroman runtime -> big overhead)
+Onda dolazi asm.js kao neki predecessor ovog hepeka, ali je i njemu dosta falilo. 
+
+ * sastali se veliki browser vendori i definisali specifikaciju. wasm je set instrukcija za virtuelnu stek masinu. dakle ne definise kako ce sami programi
+ biti ucitani ili npr kako se izvrsavaju I/O operacije, vec je to namjerno prepusteno okruzenju koje ga implementira.
+
+- WASM:
+ * Osnove: radi na principu stek masine, znaci varijable se uvijek uzimaju s vrha steka i vracaju tu.
+ tipovi, mozda ona slika iz official papera sa svim tipovima i operatorima itd... 
+
+ * Sta se sve moze i sta se sve ne moze: Npr pristup fsu je zabranjen, nema signala, nema mnogih sistemskih poziva iz libc, famozni quote: "wasm ne moze nista",
+ onda objasniti kako to nije ni poenta, jer treba biti brzo i sigurno. threadove trenutno ne podrzava, ali se trenutno radi na implementaciji.
+
+ * Modul: definisati, pogledaj malo poglavlje 3.2, kako se instancira modul, sta sve sadrzi, itd.
+
+ * Memorija: Linearna memorija, page size, moze rast, moze se import/export, SECURITY JAKO BITAN DIO OVDE (memorija odvojena od koda, mos radit sta hos i opet ne bi trebo nista zeznut)
+ 
+ * Interakcija s drugim jezicima? : compilation target, c, c++ i rust se uglavnom furaju. spomenuti clang tj llvm backend koji vec podrzava wasm kao target
+ (mozda navesti primjer kompajliranja za wasm sto da ne). alati kao emscripten koji pruzaju apstrakciju stvari koje nisu definisane u wasm (npr filesystem)
+
+* Mora jos nesto, razmisli i da u neke od ovih gor hepeka neku lijepu vizuelnu reprezentaciju pokazes.
+
+- Izvrsavanje koda u web klijentu:
+ * How: JS api, async naravno, plan je da se doda es6 modul podrska, kod se mora servirati
+
+ * Kompajliranje/parsiranje/skontaj neki bolji title: js se JITuje, wasm se AOTuje, ogromna razlika, najveci problem je vm startup i warmup,
+ static single assignment form, sprzi ga u single passu
+ post order stablo, very fast. mogo bi spomenuti neke specificnosti koje nude v8, spidermonkey, chakra, itd.
+
+ * Import/export: sta ce nam to i kako se radi (ne samo za varijable vec i za funkcije)
+
+ * Primjer nesigurnog koda (array out of bounds npr) i sta se desi
+
+ * Pokazati i objasniti malo slozeniji primjer, neko cackanje slike npr. u C++ (bez emscripten nego direktno)
+
+ * Benchmarks: Fino isplottaj negdje, pure js vs c++ razlika (probaj malo analizirati i network tab i opcenito na sta sve ode vrijeme)
+
+- Zakljucak:
+ * Ajde vidicemo vec
+
+ 
 
 
