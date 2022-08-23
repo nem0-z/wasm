@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <title>How old are you?</title>
-    <script src="./how_old.js"></script>
 </head>
 <body>
     <div>
@@ -11,6 +10,16 @@
     </div>
 
     <script>
+        function fetchAndInstantiate(url, importObject) {
+            return fetch(url).then(response => 
+                response.arrayBuffer()
+            ).then(bytes => 
+                WebAssembly.instantiate(bytes, importObject)
+            ).then(results =>
+                results.instance
+            );
+        }
+
         fetchAndInstantiate('how_old.wasm').then(instance => {
             const ho = instance.exports.how_old(2022, 1999);
             const age = document.getElementById('age');

@@ -33,6 +33,6 @@ extern "C" void turnOffEveryFifthPixel() {
 	}
 }
 
-extern "C" char * getData() {
+extern "C" char * getOffset() {
 	return &data[0];
 }

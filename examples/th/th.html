@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Image manipulation</title>
 </head>
 <body>
 	<button id="run-wasm">RUN WASM</button>
@@ -41,37 +38,27 @@
 					memory: memory,
 				}
 			})
-
-			const offset = instance.exports.getData();
+			const offset = instance.exports.getOffset();
 			const imageData = ctx.getImageData(0, 0, width, height);
-
-			const linearMemory = new Uint8ClampedArray(instance.exports.memory.buffer, offset, 800 * 600 * 4);
-			for (let i = 0; i < linearMemory.length; i++) {
+			const linearMemory = new Uint8ClampedArray(instance.exports.memory.buffer, offset, SIZE);
+			for (let i = 0; i < linearMemory.length; i++)
 				linearMemory[i] = imageData.data[i];
-			}
-
 
 			for (let i = 0; i < 51; i++) {
 				instance.exports.changeColorsTowardsGray();
-				for (let i = 0; i < linearMemory.length; i++) {
+				for (let i = 0; i < linearMemory.length; i++)
 					imageData.data[i] = linearMemory[i];
-				}
-			
 				ctx.putImageData(imageData, 0, 0);
 				await new Promise(r => setTimeout(r, 30));
 			}
-
 			for (let i = 0; i < 51; i++) {
 				instance.exports.changeColorsTowardsRGB();
-				for (let i = 0; i < linearMemory.length; i++) {
+				for (let i = 0; i < linearMemory.length; i++)
 					imageData.data[i] = linearMemory[i];
-				}
-			
 				ctx.putImageData(imageData, 0, 0);
 				await new Promise(r => setTimeout(r, 30));
 			}
 		}
-
 		
 	</script>
 </body>
